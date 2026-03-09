@@ -8,11 +8,11 @@ os.makedirs("plots", exist_ok=True)
 # Set style for better-looking plots
 plt.style.use('seaborn-v0_8-darkgrid')
 plt.rcParams['font.size'] = 23
-plt.rcParams['axes.labelsize'] = 25
+plt.rcParams['axes.labelsize'] = 24
 plt.rcParams['axes.titlesize'] = 26
 plt.rcParams['legend.fontsize'] = 23
-plt.rcParams['xtick.labelsize'] = 23
-plt.rcParams['ytick.labelsize'] = 23
+plt.rcParams['xtick.labelsize'] = 28
+plt.rcParams['ytick.labelsize'] = 28
 
 # Load baselines computed by parse_results.py
 _bl = pd.read_csv("csv/baselines.csv").set_index("model")["baseline"]
@@ -79,7 +79,7 @@ for idx, (filename, display_name, baseline) in enumerate(model_configs):
                     xy=(8.5, baseline),
                     xytext=(0, 5),
                     textcoords='offset points',
-                    color='red', fontsize=13, fontweight='bold',
+                    color='red', fontsize=16, fontweight='bold',
                     ha='right', va='bottom')
 
     # Set up x-axis labels
@@ -94,7 +94,7 @@ for idx, (filename, display_name, baseline) in enumerate(model_configs):
             x_labels.append(f"({count_mult}×, {mult_mult}×)")
 
     ax.set_xticks(range(9))
-    ax.set_xticklabels(x_labels, rotation=45, ha='right', fontweight='bold', fontsize=15)
+    ax.set_xticklabels(x_labels, rotation=45, ha='right', fontweight='bold', fontsize=18)
 
     # Title with panel label
     ax.set_title(f"{panel_labels[idx]} {display_name}", fontweight='bold', fontsize=26, pad=15)
@@ -103,8 +103,12 @@ for idx, (filename, display_name, baseline) in enumerate(model_configs):
     ax.grid(True, alpha=0.3, linestyle='--', linewidth=0.5)
     ax.set_axisbelow(True)
 
+    # Add extra space at the top for the legend
+    ymin, ymax = ax.get_ylim()
+    ax.set_ylim(ymin, ymax + (ymax - ymin) * 0.15)
+
     # Legend
-    legend = ax.legend(loc='best', framealpha=0.9, edgecolor='gray', fontsize=14)
+    legend = ax.legend(loc='upper right', framealpha=0.9, edgecolor='gray', fontsize=15)
     for text in legend.get_texts():
         text.set_fontweight('bold')
 
@@ -114,7 +118,7 @@ for idx, (filename, display_name, baseline) in enumerate(model_configs):
 
 # Add common X and Y labels
 fig.supxlabel('(Error Count Multiplier, Error Magnitude)', fontsize=29, fontweight='bold', y=0.11,  x=0.55)
-fig.supylabel('Accuracy (%) / mAP@50', fontsize=29, fontweight='bold', x=0.11)
+fig.supylabel('Accuracy (%) / mAP@50', fontsize=29, fontweight='bold', x=0.1)
 
 # Tight layout
 plt.tight_layout(rect=[0.08, 0.08, 1, 1])
