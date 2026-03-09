@@ -1,0 +1,7 @@
+from __future__ import annotations
+
+DEFAULT_EXTREME_COUNTS = [10, 50, 100, 500, 1000]
+DEFAULT_EXTREME_FACTORS = [10.0, 50.0, 100.0, 1000.0]
+DEFAULT_SEEDS = [992, 1234]
+
+

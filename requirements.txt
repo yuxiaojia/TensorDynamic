@@ -1,0 +1,51 @@
+# Ensure YOLOv9 can import pkg_resources
+setuptools<70
+wheel
+
+# PyTorch (CUDA 12.8 wheels)
+--extra-index-url https://download.pytorch.org/whl/cu128
+torch==2.9.1
+torchvision
+torchaudio
+
+# Core scientific libraries
+numpy<2.0
+scipy
+pandas
+matplotlib
+seaborn
+tqdm
+pyyaml
+requests
+pillow
+
+# Computer vision / YOLO dependencies
+opencv-python>=4.1.1
+albumentations>=1.0.3
+pycocotools>=2.0
+faster-coco-eval
+thop>=0.1.1
+einops
+
+# Utility libraries
+gitpython
+ipython
+psutil
+loguru
+rich
+
+# Training / experiment management
+hydra-core
+lightning
+wandb
+
+# Visualization
+graphviz
+
+# Logging
+tensorboard>=2.4.1
+
+# Fault injection frameworks
+mrfi==2.0.0
+pytorchfi==0.6.0
+pytest==6.2.5
