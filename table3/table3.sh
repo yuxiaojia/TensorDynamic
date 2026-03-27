@@ -117,8 +117,8 @@ cnn  = collect("cnn")
 gemm = collect("gemm")
 
 total    = int(cnn[0]['total_elements'])
-max_n    = max(int(r['injected_events']) for r in cnn)
-inj_rate = max_n / total * 100
+avg_n    = sum(int(r['injected_events']) for r in cnn) / len(cnn)
+inj_rate = avg_n / total * 100
 
 obs_cnn  = avg(cnn,  'observability_changed_per_inject') * 100
 obs_gemm = avg(gemm, 'observability_changed_per_inject') * 100
