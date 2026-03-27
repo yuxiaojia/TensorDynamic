@@ -140,7 +140,7 @@ print(f"{'Mean Abs. Scale':<{W}} {sc_cnn:>14.3f} {sc_gemm:>10.3f}")
 print()
 
 # Save summary CSV
-out_csv = outdir / "table2_summary.csv"
+out_csv = outdir / "table3_summary.csv"
 rows = [
     {"Metric": "Total output elements",      "Convolution": f"{total:,}",          "GEMM": f"{total:,}"},
     {"Metric": "Average insertion rate (%)", "Convolution": f"{inj_rate:.3f}",     "GEMM": f"{inj_rate:.3f}"},
