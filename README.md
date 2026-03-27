@@ -48,13 +48,13 @@ bash setup_yolo.sh
 
 ---
 
-## Table 2 — Fault Injection Observability (Convolution vs. GEMM)
+## Table 3 — Fault Injection Observability (Convolution vs. GEMM)
 
 ```bash
-nohup bash table2/table2.sh > table2_run.log 2>&1
+nohup bash table3/table3.sh > table3_run.log 2>&1
 ```
 
-Output: `table2/results/table2_summary.csv`
+Output: `table3/results/table3_summary.csv`
 
 **Estimated time: ~2–3 h**
 
@@ -151,13 +151,13 @@ TensorDynamic/
     results_baseline/         -- raw sweep CSVs (generated)
     csv/                      -- parsed pivot CSVs (generated)
     plots/                    -- output figures (generated)
-  table2/
-    table2.sh                 -- full pipeline: 50 trials + aggregate + CSV
+  table3/
+    table3.sh                 -- full pipeline: 50 trials + aggregate + CSV
     conv_matrix.py            -- convolution workload
     matrix_mult.py            -- GEMM workload
     compare_cnn.py            -- compute metrics for convolution
     compare_gemm.py           -- compute metrics for GEMM
-    results/                  -- per-trial CSVs + table2_summary.csv (generated)
+    results/                  -- per-trial CSVs + table3_summary.csv (generated)
   figure6/
     figure6.sh                -- full pipeline: profile -> parse -> plot
     parse_reg_dist.py         -- parse NVBit output txt -> CSV
